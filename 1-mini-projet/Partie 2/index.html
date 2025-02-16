@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz avec Open Trivia DB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Écran de configuration -->
+        <div id="config-screen">
+            <h1>Configurer votre Quiz</h1>
+            <form id="quiz-config">
+                <label for="num-questions">Nombre de questions :</label>
+                <input type="number" id="num-questions" min="1" max="50" value="10" required>
+
+                <label for="category">Catégorie :</label>
+                <select id="category">
+                    <option value="">Toutes catégories</option>
+                    <!-- Les catégories seront injectées dynamiquement par JavaScript -->
+                </select>
+
+                <label for="difficulty">Difficulté :</label>
+                <select id="difficulty">
+                    <option value="">Toutes difficultés</option>
+                    <option value="easy">Facile</option>
+                    <option value="medium">Moyen</option>
+                    <option value="hard">Difficile</option>
+                </select>
+
+                <label for="type">Type de questions :</label>
+                <select id="type">
+                    <option value="">Tous types</option>
+                    <option value="multiple">Choix multiples</option>
+                    <option value="boolean">Vrai/Faux</option>
+                </select>
+
+                <button type="submit">Générer le Quiz</button>
+            </form>
+        </div>
+
+        <!-- Écran du quiz -->
+        <div id="quiz-screen" class="hidden">
+            <div id="timer">Temps restant : 10s</div>
+            <div id="question-container">
+                <h2 id="question"></h2>
+                <div id="choices"></div>
+            </div>
+        </div>
+
+        <!-- Écran des résultats -->
+        <div id="result-screen" class="hidden">
+            <h2>Votre Score : <span id="score"></span>/<span id="total-questions"></span></h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
