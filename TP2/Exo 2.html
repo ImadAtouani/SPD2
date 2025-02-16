@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        input {
+            width: 100px;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="field1" value="3">
+        <input type="text" id="field2" value="4">
+        <button onclick="permuter()">Permuter</button>
+    </div>
+    <script>
+        function permuter() {
+            let field1 = document.getElementById("field1");
+            let field2 = document.getElementById("field2");
+            let temp = field1.value;
+            field1.value = field2.value;
+            field2.value = temp;
+        }
+    </script>
+</body>
+</html>

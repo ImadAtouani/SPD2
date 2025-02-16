@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 2</title>
+    <style>
+        .container {
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+        input {
+            width: 80%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Génération de tableau</h2>
+    <label>Dimension du tableau:</label><br>
+    <input type="number" id="dimension" min="1"><br>
+    
+    <label>La valeur minimale:</label><br>
+    <input type="number" id="minValue"><br>
+    
+    <label>La valeur maximale:</label><br>
+    <input type="number" id="maxValue"><br>
+    
+    <button onclick="genererTableau()">Générez un tableau</button>
+    
+    <p class="error" id="errorMessage"></p>
+
+    <table id="tableau"></table>
+</div>
+
+<script>
+    function genererTableau() {
+        let dimension = document.getElementById("dimension").value;
+        let minValue = document.getElementById("minValue").value;
+        let maxValue = document.getElementById("maxValue").value;
+        let errorMessage = document.getElementById("errorMessage");
+        let tableau = document.getElementById("tableau");
+
+        tableau.innerHTML = "";
+        errorMessage.textContent = "";
+
+        if (!dimension || !minValue || !maxValue) {
+            errorMessage.textContent = "Tous les champs doivent être remplis.";
+            return;
+        }
+
+        dimension = parseInt(dimension);
+        minValue = parseInt(minValue);
+        maxValue = parseInt(maxValue);
+
+        if (isNaN(dimension) || isNaN(minValue) || isNaN(maxValue)) {
+            errorMessage.textContent = "Les valeurs doivent être des nombres entiers.";
+            return;
+        }
+
+        if (minValue >= maxValue) {
+            errorMessage.textContent = "La valeur minimale doit être inférieure à la valeur maximale.";
+            return;
+        }
+
+        let row, cell;
+        let table = document.createElement("tbody");
+
+        for (let i = 0; i < dimension; i++) {
+            if (i % 10 === 0) {
+                row = document.createElement("tr");
+                table.appendChild(row);
+            }
+            cell = document.createElement("td");
+            cell.textContent = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+            row.appendChild(cell);
+        }
+
+        tableau.appendChild(table);
+    }
+</script>
+
+</body>
+</html>

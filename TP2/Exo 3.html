@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="num1" placeholder="Saisir le premier nombre">
+        <input type="number" id="num2" placeholder="Saisir le deuxième nombre">
+        <select id="operation">
+            <option value="">Choisir opération</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">x</option>
+            <option value="/">/</option>
+        </select>
+        <button onclick="calculer()">Calculer</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculer() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operation = document.getElementById("operation").value;
+            let resultElement = document.getElementById("result");
+
+            if (isNaN(num1) || isNaN(num2)) {
+                resultElement.textContent = "Veuillez saisir deux nombres valides.";
+                return;
+            }
+
+            if (!operation) {
+                resultElement.textContent = "Veuillez choisir une opération.";
+                return;
+            }
+
+            let result;
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        resultElement.textContent = "Division par zéro impossible.";
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = "Opération non reconnue.";
+            }
+
+            resultElement.textContent = "Résultat: " + result;
+        }
+    </script>
+</body>
+</html>

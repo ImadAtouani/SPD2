@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 3</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Formulaire d'inscription des étudiants</h2>
+    <form id="studentForm">
+        <label>Code étudiant: <input type="text" id="code"></label><br><br>
+        <label>Nom: <input type="text" id="nom"></label><br><br>
+        <label>Prénom: <input type="text" id="prenom"></label><br><br>
+        <label>Semestre:
+            <select id="semestre">
+                <option value="">--Sélectionnez--</option>
+                <option value="Semestre 1">Semestre 1</option>
+                <option value="Semestre 2">Semestre 2</option>
+            </select>
+        </label><br><br>
+        <label>Module 1: <input type="number" id="mod1"></label><br><br>
+        <label>Module 2: <input type="number" id="mod2"></label><br><br>
+        <label>Module 3: <input type="number" id="mod3"></label><br><br>
+        <label>Module 4: <input type="number" id="mod4"></label><br><br>
+        <label>Module 5: <input type="number" id="mod5"></label><br><br>
+        <label>Module 6: <input type="number" id="mod6"></label><br><br>
+        <button type="button" onclick="ajouterEtudiant()">Ajouter</button>
+        <p class="error" id="errorMessage"></p>
+    </form>
+
+    <h2>Liste des étudiants</h2>
+    <table id="studentTable">
+        <tr>
+            <th>Code étudiant</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Semestre</th>
+            <th>Module 1</th>
+            <th>Module 2</th>
+            <th>Module 3</th>
+            <th>Module 4</th>
+            <th>Module 5</th>
+            <th>Module 6</th>
+            <th>Moyenne</th>
+            <th>Décision</th>
+        </tr>
+    </table>
+</div>
+
+<script>
+    function ajouterEtudiant() {
+        let code = document.getElementById("code").value.trim();
+        let nom = document.getElementById("nom").value.trim();
+        let prenom = document.getElementById("prenom").value.trim();
+        let semestre = document.getElementById("semestre").value;
+
+        let mod1 = parseFloat(document.getElementById("mod1").value);
+        let mod2 = parseFloat(document.getElementById("mod2").value);
+        let mod3 = parseFloat(document.getElementById("mod3").value);
+        let mod4 = parseFloat(document.getElementById("mod4").value);
+        let mod5 = parseFloat(document.getElementById("mod5").value);
+        let mod6 = parseFloat(document.getElementById("mod6").value);
+
+        let errorMessage = document.getElementById("errorMessage");
+
+        if (!code || !nom || !prenom || !semestre || isNaN(mod1) || isNaN(mod2) || isNaN(mod3) || isNaN(mod4) || isNaN(mod5) || isNaN(mod6)) {
+            errorMessage.textContent = "Tous les champs doivent être remplis avec des valeurs valides.";
+            return;
+        }
+
+        let notes = [mod1, mod2, mod3, mod4, mod5, mod6];
+        let moyenne = notes.reduce((a, b) => a + b, 0) / notes.length;
+        let nonValides = notes.filter(note => note < 12 && note >= 8).length;
+        let eliminatoires = notes.filter(note => note < 8).length;
+
+        let decision = "Semestre Validé";
+        if (eliminatoires > 0 || nonValides >= 3 || moyenne < 12) {
+            decision = "Semestre Non Validé";
+        }
+
+        let table = document.getElementById("studentTable");
+        let newRow = table.insertRow(-1);
+        newRow.innerHTML = `
+            <td>${code}</td>
+            <td>${nom}</td>
+            <td>${prenom}</td>
+            <td>${semestre}</td>
+            <td>${mod1}</td>
+            <td>${mod2}</td>
+            <td>${mod3}</td>
+            <td>${mod4}</td>
+            <td>${mod5}</td>
+            <td>${mod6}</td>
+            <td>${moyenne.toFixed(2)}</td>
+            <td>${decision}</td>
+        `;
+
+        errorMessage.textContent = "";
+        document.getElementById("studentForm").reset();
+    }
+</script>
+
+</body>
+</html>

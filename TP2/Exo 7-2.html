@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 7-2</title>
+    <style>
+        #menu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px;
+            z-index: 1;
+        }
+        #trigger {
+            padding: 20px;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="trigger">Cliquez ici pour afficher le menu</div>
+    <div id="menu">
+        <p>Option 1</p>
+        <p>Option 2</p>
+        <p>Option 3</p>
+    </div>
+
+    <script>
+        const trigger = document.getElementById('trigger');
+        const menu = document.getElementById('menu');
+
+        trigger.addEventListener('click', function() {
+            menu.style.display = 'block';
+        });
+
+        trigger.addEventListener('mouseleave', function() {
+            menu.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

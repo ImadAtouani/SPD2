@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 1</title>
+    <style>
+        .container {
+            padding: 10px;
+            display: inline-block;
+        }
+        input {
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="num1" value="13"> +
+        <input type="number" id="num2" value="9"> =
+        <span id="result">22</span>
+        <button onclick="addition()">Calculer</button>
+    </div>
+    <script>
+        function addition() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let result = num1 + num2;
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>

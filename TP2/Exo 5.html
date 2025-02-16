@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 5</title>
+</head>
+<body>
+    <h1>Calcul du Prix TTC</h1>
+    <script>
+        function validerNombrePositif(valeur) {
+            return !isNaN(valeur) && valeur > 0;
+        }
+        let prixHT = prompt("Entrez le prix HT :");
+        while (!validerNombrePositif(prixHT)) {
+            alert("Veuillez entrer un prix valide supérieur à 0.");
+            prixHT = prompt("Entrez le prix HT :");
+        }
+        let tauxTVA = prompt("Entrez le taux de la TVA (en pourcentage) :");
+        while (!validerNombrePositif(tauxTVA)) {
+            alert("Veuillez entrer un taux de TVA valide supérieur à 0.");
+            tauxTVA = prompt("Entrez le taux de la TVA (en pourcentage) :");
+        }
+        let prixTTC = parseFloat(prixHT) * (1 + parseFloat(tauxTVA) / 100);
+        document.body.innerText = `Le prix TTC est de ${prixTTC.toFixed(2)} $`;
+    </script>
+</body>
+</html>

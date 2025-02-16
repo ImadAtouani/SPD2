@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        input, textarea, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .email-display {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: left;
+        }
+        .email-display h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        .email-display p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Formulaire de contact</h2>
+        <input type="email" id="email" placeholder="Email : @gmail.com">
+        <input type="text" id="objet" placeholder="Objet : Objet de l'email">
+        <textarea id="corps" placeholder="Corps de l'email"></textarea>
+        <button onclick="afficherEmail()">Envoyer l'email</button>
+
+        <div class="email-display" id="emailDisplay" style="display: none;">
+            <h3>Email envoyé :</h3>
+            <p><strong>Sender :</strong> <span id="displayEmail"></span></p>
+            <p><strong>Objet :</strong> <span id="displayObjet"></span></p>
+            <p><strong>Corps de l'email :</strong> <span id="displayCorps"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function afficherEmail() {
+            var email = document.getElementById("email").value;
+            var objet = document.getElementById("objet").value;
+            var corps = document.getElementById("corps").value;
+            var emailDisplay = document.getElementById("emailDisplay");
+
+            if (!objet || !corps) {
+                alert("Veuillez remplir l'objet et le corps de l'email.");
+                return;
+            }
+
+            document.getElementById("displayEmail").textContent = email;
+            document.getElementById("displayObjet").textContent = objet;
+            document.getElementById("displayCorps").textContent = corps;
+
+            emailDisplay.style.display = "block";
+        }
+    </script>
+</body>
+</html>

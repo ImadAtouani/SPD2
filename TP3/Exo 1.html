@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo 1</title>
+    <style>
+        .container {
+            width: 50%;
+            margin: auto;
+        }
+        form {
+            border: 1px solid black;
+            padding: 15px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+        .error {
+            color: red;
+        }
+        .recap {
+            margin-top: 20px;
+            border: 1px solid black;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="text-align: center;">Formulaire d'inscription</h2>
+    <form id="registrationForm">
+        <label>Nom: <input type="text" id="nom"></label>
+        <label>Prénom: <input type="text" id="prenom"></label>
+        <label>E-mail: <input type="email" id="email"></label>
+        <label>Mot de passe: <input type="password" id="password"></label>
+        <label>Ressaisir le mot de passe: <input type="password" id="confirmPassword"></label>
+        <label>Téléphone: <input type="tel" id="telephone"></label>
+        <label>Langue:
+            <select id="langue">
+                <option value="Anglais">Anglais</option>
+                <option value="Français">Français</option>
+                <option value="Espagnol">Espagnol</option>
+            </select>
+        </label>
+        <label>Commentaire:
+            <textarea id="commentaire"></textarea>
+        </label>
+
+        <div class="buttons">
+            <button type="button" onclick="validerFormulaire()">Valider</button>
+            <button type="button" onclick="annulerFormulaire()">Annuler</button>
+        </div>
+        <p class="error" id="errorMessage"></p>
+    </form>
+
+    <div class="recap" id="recap">
+        <h3>Récapitulatif des informations</h3>
+        <p><strong>Nom:</strong> <span id="recapNom"></span></p>
+        <p><strong>Prénom:</strong> <span id="recapPrenom"></span></p>
+        <p><strong>E-mail:</strong> <span id="recapEmail"></span></p>
+        <p><strong>Téléphone:</strong> <span id="recapTelephone"></span></p>
+        <p><strong>Langue:</strong> <span id="recapLangue"></span></p>
+        <p><strong>Commentaire:</strong> <span id="recapCommentaire"></span></p>
+    </div>
+</div>
+
+<script>
+    function validerFormulaire() {
+        let nom = document.getElementById("nom").value.trim();
+        let prenom = document.getElementById("prenom").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        let telephone = document.getElementById("telephone").value.trim();
+        let langue = document.getElementById("langue").value;
+        let commentaire = document.getElementById("commentaire").value.trim();
+        let errorMessage = document.getElementById("errorMessage");
+
+        if (!nom || !prenom || !email || !password || !confirmPassword || !telephone || !langue) {
+            errorMessage.textContent = "Tous les champs sont obligatoires.";
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            errorMessage.textContent = "Les mots de passe ne correspondent pas.";
+            return;
+        }
+
+        document.getElementById("recapNom").textContent = nom;
+        document.getElementById("recapPrenom").textContent = prenom;
+        document.getElementById("recapEmail").textContent = email;
+        document.getElementById("recapTelephone").textContent = telephone;
+        document.getElementById("recapLangue").textContent = langue;
+        document.getElementById("recapCommentaire").textContent = commentaire || "Aucun";
+
+        document.getElementById("recap").style.display = "block";
+        errorMessage.textContent = "";
+    }
+
+    function annulerFormulaire() {
+        document.getElementById("registrationForm").reset();
+        document.getElementById("recap").style.display = "none";
+        document.getElementById("errorMessage").textContent = "";
+    }
+</script>
+
+</body>
+</html>
