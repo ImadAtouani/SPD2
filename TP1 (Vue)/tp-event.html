@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Manipulation de vue</title>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="monapp">
+    <h2>Exercice 1</h2>
+    <button @click="changer_titre">{{ titre }}</button>
+
+    <h2>Exercice 2</h2>
+    <button @click="incrémenter">++</button>
+    <span>{{ compteur }}</span>
+    <button @click="décrémenter">--</button>
+
+    <h2>Exercice 3</h2>
+    <input v-model="texte" @input="vérifier_espace" placeholder="Saisissez du texte sans espace" />
+    <p v-if="rappel" style="color: red;">Veuillez saisir une chaîne de caractères ne contenant pas d'espace dans le champ</p>
+</div>
+
+<script>
+    const appli = {
+        data() {
+            return {
+                titre: "Cliquez moi!",
+
+                compteur: 0,
+
+                texte: '',
+                rappel: false
+            }
+        },
+        methods: {
+            changer_titre() {
+                this.titre = "Cliqué!";
+            },
+
+            incrémenter() {
+                this.compteur++;
+            },
+            décrémenter() {
+                this.compteur--;
+            },
+
+            vérifier_espace() {
+                if (this.texte.includes(' ')) {
+                    this.rappel = true;
+                } else {
+                    this.rappel = false;
+                }
+            }
+        }
+    };
+
+    Vue.createApp(appli).mount("#monapp");
+</script>
+
+</body>
+</html>
