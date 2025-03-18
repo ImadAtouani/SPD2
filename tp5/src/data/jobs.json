@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "title": "Software Engineer",
+    "description": "Develop and maintain software applications.",
+    "salary": 80000,
+    "date_of_creation": "2025-03-17",
+    "years_of_experience": 3
+  },
+  {
+    "id": "2",
+    "title": "Data Scientist",
+    "description": "Analyze large datasets to extract insights.",
+    "salary": 90000,
+    "date_of_creation": "2025-03-16",
+    "years_of_experience": 5
+  },
+  {
+    "id": "3",
+    "title": "Product Manager",
+    "description": "Define product roadmap and prioritize features.",
+    "salary": 100000,
+    "date_of_creation": "2025-03-15",
+    "years_of_experience": 7
+  },
+  {
+    "id": "4",
+    "title": "UX/UI Designer",
+    "description": "Design user interfaces and enhance user experience.",
+    "salary": 85000,
+    "date_of_creation": "2025-03-14",
+    "years_of_experience": 4
+  },
+  {
+    "id": "5",
+    "title": "Marketing Manager",
+    "description": "Plan and execute marketing campaigns.",
+    "salary": 95000,
+    "date_of_creation": "2025-03-13",
+    "years_of_experience": 6
+  },
+  {
+    "id": "6",
+    "title": "Sales Representative",
+    "description": "Generate leads and close sales deals.",
+    "salary": 75000,
+    "date_of_creation": "2025-03-12",
+    "years_of_experience": 2
+  },
+  {
+    "id": "7",
+    "title": "HR Manager",
+    "description": "Manage human resources and employee relations.",
+    "salary": 85000,
+    "date_of_creation": "2025-03-11",
+    "years_of_experience": 4
+  },
+  {
+    "id": "8",
+    "title": "Financial Analyst",
+    "description": "Analyze financial data and prepare reports.",
+    "salary": 90000,
+    "date_of_creation": "2025-03-10",
+    "years_of_experience": 5
+  },
+  {
+    "id": "9",
+    "title": "Operations Manager",
+    "description": "Oversee daily operations and improve efficiency.",
+    "salary": 95000,
+    "date_of_creation": "2025-03-09",
+    "years_of_experience": 6
+  },
+  {
+    "id": "10",
+    "title": "Customer Support Specialist",
+    "description": "Provide customer service and resolve issues.",
+    "salary": 75000,
+    "date_of_creation": "2025-03-08",
+    "years_of_experience": 2
+  }
+]
